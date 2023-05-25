@@ -1140,15 +1140,8 @@ MonoBehaviour:
   _animator: {fileID: 569067045}
   _audioSource: {fileID: 467530220}
   _songs:
-  - {fileID: 11400000, guid: c6c48a32791616c4c99f1db368293dd3, type: 2}
-  - {fileID: 11400000, guid: dac5fad6049c1564f89a34408f8d46ba, type: 2}
-  - {fileID: 11400000, guid: 6dd596b681c820142bf7024776b23aed, type: 2}
-  - {fileID: 11400000, guid: e7a3820c21e82704aafc835b9cadd656, type: 2}
-  - {fileID: 11400000, guid: a4fe2d04baab57243901f981e0827be6, type: 2}
-  - {fileID: 11400000, guid: 304069b9fedcc8b40ae399a578dd3f9b, type: 2}
-  - {fileID: 11400000, guid: e330a15ed9e7f6744a64540f0c13bffe, type: 2}
-  - {fileID: 11400000, guid: 3f02d9c538079ce4c99337d5c0b487e6, type: 2}
-  - {fileID: 11400000, guid: aa47fc4308777364ba2c1e40ac91d78f, type: 2}
+  - {fileID: 11400000, guid: 50a8d861693b6b742aa428adfb54d50f, type: 2}
+  - {fileID: 11400000, guid: 97793bd746d39534bb66bd82a39fbcd7, type: 2}
   _playingNow: 0
   _defaultBpm: 120
   _animationSpeed: 0

@@ -5,6 +5,7 @@ using PlayerState;
  public class Player : ShadingBody
 {
     private const float _minSpeed = 0.5f;
+    private const float _maxAdmissibleAngle = 6.0f;
     [SerializeField] private string _name;
     [SerializeField] private int _id = -1;
     [SerializeField] private SpriteRenderer _spriteRenderer;
@@ -111,23 +112,27 @@ using PlayerState;
         }
         _diskHandling.UpdateOrientation();
     }
-    public void MoveToPosition(Vector3 position, float distance)
+    public void MoveToPosition(Vector3 position, float radius)
         {
             Vector3 direction = position - transform.position;
-            if (Vector3.Distance(transform.position, position) > distance) Move(direction);
+            if (Vector3.Distance(transform.position, position) > radius) Move(direction);
             else if (transform.hasChanged) Stop();
         }
     public void Move(Vector3 direction, bool rush = false)
     {
         float speed;
         float force;
-        if (rush) { speed = _maxSpeed; force = _maxForce;     }
+        if (rush) { speed = _maxSpeed; force = _maxForce; }
         else      { speed = _jogSpeed; force = _maxForce * 0.75f; }
+        float angle = Vector3.Angle(direction, _rigidbody.velocity);
+        if (Math.Abs(angle) > _maxAdmissibleAngle) Stop(angle * 90);
         _rigidbody.AddForce(direction.normalized * force, ForceMode.VelocityChange);
     }
-    public void Stop()
+    public void Stop(float cents = 1.0f)
     {
-        float slower = 1 + _stoppingFactor * Time.deltaTime;
+        if (cents > 1.0f) cents = 1.0f;
+        float stopFactor = _stoppingFactor * cents;
+        float slower = 1 + stopFactor * Time.deltaTime;
         _rigidbody.velocity = _rigidbody.velocity / slower;
         if (_rigidbody.velocity.magnitude < _minSpeed) _rigidbody.velocity = Vector3.zero;
         _animator.SetFloat("Speed", _rigidbody.velocity.magnitude);

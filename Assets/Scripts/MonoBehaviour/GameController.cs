@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
     public IList<Team> Teams { get => _teams.AsReadOnly(); }
     public void Start()
     {
-        AddPracticeGames(3);
+        AddPracticeGames(1);
     }
     public void AddPracticeGames(int count)
     {
